@@ -1,0 +1,79 @@
+##Singly Linked List
+
+class SinglyLinkedList {
+    Node head;
+
+    SinglyLinkedList() {
+    }
+
+    public void InsertAtBeginning(int data) {
+        Node n = new Node(data);
+        n.next = this.head;
+        this.head = n;
+    }
+
+    public void deleteAtBeginning() {
+        if (this.head == null) {
+            System.out.println("No Node delete");
+        } else {
+            this.head = this.head.next;
+        }
+    }
+
+    public void InsertAtEnd(int data) {
+        Node n = new Node(data);
+
+        Node temp;
+        for(temp = this.head; temp.next != null; temp = temp.next) {
+        }
+
+        temp.next = n;
+    }
+
+    public void InsertAnyPos(int pos, int data) {
+        if (pos <= 0) {
+            System.out.println("Invalid Position");
+        } else {
+            Node newNode = new Node(data);
+            if (pos == 1) {
+                newNode.next = this.head;
+                this.head = newNode;
+            } else {
+                Node temp = this.head;
+
+                for(int i = 0; i < pos - 1 && temp != null; ++i) {
+                    temp = temp.next;
+                }
+
+                if (temp == null) {
+                    System.out.println("Exeeds the gn length");
+                } else {
+                    newNode.next = temp.next;
+                    temp.next = newNode;
+                }
+            }
+        }
+    }
+
+    public void deleteAtEnd() {
+        if (this.head == null) {
+            System.out.println("empty");
+        } else if (this.head.next == null) {
+            this.head = null;
+        } else {
+            Node temp;
+            for(temp = this.head; temp.next != null && temp.next.next != null; temp = temp.next) {
+            }
+
+            temp.next = null;
+        }
+    }
+
+    public void display() {
+        for(Node temp = this.head; temp != null; temp = temp.next) {
+            System.out.println(temp.data + " ");
+        }
+
+        System.out.println();
+    }
+}
